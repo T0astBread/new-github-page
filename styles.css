@@ -118,7 +118,7 @@ nav ul li:hover::before
     vertical-align: bottom;
 }
 
-.invisible-line-portion
+html:not(.gecko) #character-art-bg pre font
 {
-    color: transparent!important;
+    transition: color .5s ease;
 }

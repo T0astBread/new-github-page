@@ -6,11 +6,12 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="scripts/lib/css_browser_selector.js"></script>
         <script src="scripts/load-character-art.js"></script>
         <script type="text/javascript">
             $(document).ready(() =>
             {
-                loadArtwork(showArtworkAnimated);
+                loadArtwork(() => showArtworkAnimated({colorAnimationType: Math.round(Math.random() + 1)}));
             });
         </script>
         <title>T0astBread</title>
