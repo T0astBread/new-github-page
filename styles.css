@@ -111,6 +111,9 @@ nav ul li:hover::before
 
 #character-art-bg
 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     margin-bottom: -1rem;
     /* margin-left: -10%; */
     opacity: var(--character-art-bg-opacity);
