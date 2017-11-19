@@ -1,5 +1,6 @@
 Artworks:
 Mokou by jokanhiyou (https://twitter.com/jokanhiyou)
+The other ones: IDK (if you know one, feel free to make a pull request or write an issue with the tag "source")
 
 Tools used:
 http://www.text-image.com
