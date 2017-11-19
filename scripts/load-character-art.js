@@ -13,9 +13,9 @@ let showArtwork = () =>
     $("#character-art-bg").show();
 }
 
-let showArtworkAnimated = (options={colorAnimationType:2, stepDelay:0, backwards:true}) =>
+let showArtworkAnimated = ({colorAnimationType=2, stepDelay=0, stepSize=50, backwards=true} = {}) =>
 {
-    let stepSize = $("html").is(".gecko") ? 90 : 20;  // To compensate for Firefox's slow JS engine
+    stepSize *= $("html").is(".gecko") ? 2 : 1;  // To compensate for Firefox's slow JS engine
 
     let bg = $("#character-art-bg");
     bg.width(bg.width());
@@ -28,13 +28,13 @@ let showArtworkAnimated = (options={colorAnimationType:2, stepDelay:0, backwards
     {
         for(let i = 0; i < amount; i++)
         {
-            let part = artworkParts.eq((options.backwards ? artworkParts.length - index : index));
+            let part = artworkParts.eq((backwards ? artworkParts.length - index : index));
             index++;
             part.show();
-            if(options.colorAnimationType === 1) part.attr("color", part.attr("tb-temp-color"));
+            if(colorAnimationType === 1) part.attr("color", part.attr("tb-temp-color"));
         }
-        if(index < artworkParts.length - 1) setTimeout(() => showArtworkParts(index, stepSize), options.stepDelay);
-        else if(options.colorAnimationType === 2) artworkParts.each((i, part) => part.setAttribute("color", part.getAttribute("tb-temp-color")));
+        if(index < artworkParts.length - 1) setTimeout(() => showArtworkParts(index, stepSize), stepDelay);
+        else if(colorAnimationType === 2) artworkParts.each((i, part) => part.setAttribute("color", part.getAttribute("tb-temp-color")));
     }
     showArtworkParts(0);
 }
