@@ -11,12 +11,13 @@ body[tb-theme=bw]
     --text-primary: hsla(0, 0%, 90%, 1);
     --font-face: 125% Consolas;
     --character-art-bg-opacity: .35;
+    --character-art-bg-filter: none;
 }
 
 body
 {
     position: relative;
-    margin: 0 5rem;
+    margin-left: 5rem;
 
     background-color: var(--main-bg);
     color: var(--text-primary);
@@ -111,6 +112,7 @@ nav ul li:hover::before
 
 #character-art-bg
 {
+    /* vertical-align: bottom; */
     position: absolute;
     bottom: 0;
     right: 0;
@@ -118,19 +120,20 @@ nav ul li:hover::before
     /* margin-left: -10%; */
     opacity: var(--character-art-bg-opacity);
     letter-spacing: -.035rem;
+    filter: var(--character-art-bg-filter);
 }
 
 #character-art-bg-wrapper
 {
-    vertical-align: bottom;
     position: absolute;
-    right: -30%;
+    right: 0;
     bottom: 0;
 }
 
 #character-art-bg pre font
 {
     font-size: 2vh;
+    /* font-size: 3pt; */
 }
 
 html:not(.gecko) #character-art-bg pre font
