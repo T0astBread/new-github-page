@@ -1,0 +1,14 @@
+Instructions on how to make one of these text character artwork thingies:
+1. Your image should have a black background or at least a solid color background
+2. Go to http://www.text-image.com
+3. Select your image
+4. Set the font size to "smallest" (althouth that doesn't matter I think)
+5. Set the image width to 130
+6. Set the background to "black"
+7. Set the web browser to "other"
+8. Click convert
+8 1/2. If your source image didn't have a black background, run the script found in text-image-after-edit.js in your browser console
+9. Copy the HTML content of the first tag (with the starting and closing tag) after the string "<!-- IMAGE BEGINS HERE -->"
+10. Paste in in an HTML file of your liking
+
+If you want your freshly generated character art to be picked up by the character art selector, it has to be in the /character-art/ folder and you have to add its filename (without the extension) to the array called ARTWORKS in /scripts/character-art.js
