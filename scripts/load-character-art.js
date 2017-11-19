@@ -22,7 +22,7 @@ let showArtworkAnimated = ({colorAnimationType=2, stepDelay=0, stepSize=50, back
 
     let artworkParts = $("#character-art-bg pre font");
     artworkParts.each((i, part) => part.setAttribute("tb-temp-color", part.getAttribute("color")));
-    artworkParts.attr("color", "white").hide();
+    artworkParts.attr("color", "white").css("opacity", 0);
 
     let showArtworkParts = (index, amount=1) =>
     {
@@ -30,7 +30,7 @@ let showArtworkAnimated = ({colorAnimationType=2, stepDelay=0, stepSize=50, back
         {
             let part = artworkParts.eq((backwards ? artworkParts.length - index : index));
             index++;
-            part.show();
+            part.css("opacity", 1);
             if(colorAnimationType === 1) part.attr("color", part.attr("tb-temp-color"));
         }
         if(index < artworkParts.length - 1) setTimeout(() => showArtworkParts(index, stepSize), stepDelay);
