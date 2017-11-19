@@ -1,4 +1,4 @@
-//Script that makes white background on http://www.text-image.com transparent
+// Script that makes white background on http://www.text-image.com transparent
 
 $$("font[color=white]").forEach(i =>
 {
