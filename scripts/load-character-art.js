@@ -1,6 +1,10 @@
+/////////////////
+//// LOADING ////
+/////////////////
+
 let loadArtwork = (callback) =>
 {
-    $("#character-art-bg").load("/character-art/mokou-color.html", callback);
+    $("#character-art-bg").load(getRandomCharacterArtworkPath(), callback);
 }
 
 let hideArtwork = () =>
@@ -35,3 +39,23 @@ let showArtworkAnimated = ({colorAnimationType=2, stepDelay=0, stepSize=50, back
     }
     showArtworkParts(0);
 }
+
+
+///////////////////
+//// SELECTING ////
+///////////////////
+
+const ARTWORKS =
+[
+    "agiri",
+    "ai",
+    "chen-theblackcat",
+    "chen",
+    "dagashikashi",
+    "idk",
+    "mokou"
+]
+
+let getRandomCharacterArtwork = () => ARTWORKS[Math.floor(Math.random() * ARTWORKS.length)];
+
+let getRandomCharacterArtworkPath = () => "/character-art/" + getRandomCharacterArtwork() + ".html";
