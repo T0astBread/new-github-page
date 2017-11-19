@@ -17,9 +17,6 @@ let showArtworkAnimated = ({colorAnimationType=2, stepDelay=0, stepSize=50, back
 {
     stepSize *= $("html").is(".gecko") ? 2 : 1;  // To compensate for Firefox's slow JS engine
 
-    let bg = $("#character-art-bg");
-    bg.width(bg.width());
-
     let artworkParts = $("#character-art-bg pre font");
     artworkParts.each((i, part) => part.setAttribute("tb-temp-color", part.getAttribute("color")));
     artworkParts.attr("color", "white").css("opacity", 0);

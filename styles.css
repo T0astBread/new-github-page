@@ -15,6 +15,9 @@ body[tb-theme=bw]
 
 body
 {
+    position: relative;
+    margin: 0 5rem;
+
     background-color: var(--main-bg);
     color: var(--text-primary);
     font: var(--font-face);
@@ -109,6 +112,7 @@ nav ul li:hover::before
 #character-art-bg
 {
     margin-bottom: -1rem;
+    /* margin-left: -10%; */
     opacity: var(--character-art-bg-opacity);
     letter-spacing: -.035rem;
 }
@@ -116,6 +120,14 @@ nav ul li:hover::before
 #character-art-bg-wrapper
 {
     vertical-align: bottom;
+    position: absolute;
+    right: -30%;
+    bottom: 0;
+}
+
+#character-art-bg pre font
+{
+    font-size: 2vh;
 }
 
 html:not(.gecko) #character-art-bg pre font
