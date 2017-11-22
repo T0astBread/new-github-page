@@ -4,35 +4,42 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="/styles/styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="scripts/lib/css_browser_selector.js"></script>
-        <script src="scripts/character-art.js"></script>
-        <script type="text/javascript">
-            $(document).ready(() =>
-            {
-                loadArtwork(() => showArtworkAnimated({colorAnimationType: 1}));
-            });
-        </script>
-        <title>T0astBread</title>
+        <script src="/scripts/lib/css_browser_selector.js"></script>
+        <script src="/scripts/character-art.js"></script>
+        <script src="/scripts/nav.js"></script>
+        <title>T0astBread's GitHub</title>
     </head>
     <body tb-theme="bw">
-        <div id="centered-page-wrapper">
-            <div id="centered-page">
-                <h1>Header</h1>
-                <nav>
-                    <ul>
-                        <li>Home</li>
-                        <li>Repositories</li>
-                        <li>Random facts about me</li>
-                        <li>Links on social media</li>
-                        <li>Exit</li>
-                    </ul>
-                </nav>
+        <div id="page-wrapper" tb-theme="bw">
+            <script type="text/javascript">
+                $(document).ready(() =>
+                {
+                    loadArtwork(() => showArtworkAnimated(
+                    {
+                        colorAnimationType: 1
+                    }));
+                    registerNavClickListeners();
+                });
+            </script>
+            <div id="centered-page-wrapper">
+                <div id="centered-page">
+                    <h1>Header</h1>
+                    <nav>
+                        <ul>
+                            <li>Home</li>
+                            <li id="nav-repos"><a href="/repos">Repositories</a></li>
+                            <li id="nav-babel"><a href="/babel">Pseudo-Babel</a></li>
+                            <li>Links on social media</li>
+                            <li>Exit</li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-        </div>
-        <div id="character-art-bg-wrapper">
-            <div id="character-art-bg">
+            <div id="character-art-bg-wrapper">
+                <div id="character-art-bg">
+                </div>
             </div>
         </div>
     </body>

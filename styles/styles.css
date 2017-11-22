@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-body[tb-theme=bw]
+[tb-theme=bw]
 {
     --main-bg: hsla(0, 0%, 2%, 1);
     --text-primary: hsla(0, 0%, 90%, 1);
@@ -42,6 +42,12 @@ body
     display: inline-block;
 }
 
+[tb-page-state=expanded] #centered-page h1
+{
+    opacity: 0;
+    pointer-events: none;
+}
+
 nav
 {
     --nav-anim-easing: ease-out;
@@ -60,17 +66,38 @@ nav ul li
     transition: .25s var(--nav-anim-easing);
 }
 
-nav ul li:hover
+nav ul li:hover, [tb-page-state=expanded] nav ul li.active
 {
     font-size: 200%;
     padding-top: .1em;
     padding-bottom: .1em;
 }
 
+[tb-page-state=expanded] nav ul li:not(.active)
+{
+    opacity: 0;
+    pointer-events: none;
+}
+
+[tb-page-state=expanded] nav ul li.active
+{
+    position: absolute;
+    width: 80vw;
+    z-index: 50;
+    font-size: 240%;
+}
+
 nav ul li::before
 {
     content: ">";
     position: absolute;
+    transition: transform .25s ease;
+}
+
+[tb-page-state=expanded] nav ul li::before
+{
+    /* content: "<"; */
+    transform: scale(-1) translateX(1.75em);
 }
 
 nav ul li:hover::before
@@ -108,6 +135,22 @@ nav ul li:hover::before
     {
         margin-left: -.5em;
     }
+}
+
+nav ul li .page
+{
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 0;
+    text-indent: 0;
+    margin-left: -1em;
+    transition: max-height .5s .25s ease;
+}
+
+[tb-page-state=expanded] nav ul li.active .page
+{
+    max-height: 80vh;
+    transition: max-height .125s ease;
 }
 
 #character-art-bg
