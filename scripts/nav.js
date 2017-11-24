@@ -1,3 +1,5 @@
+let scheduledFading;
+
 let registerNavClickListeners = () =>
 {
     $("nav a").click(evt =>
@@ -16,25 +18,44 @@ let registerNavClickListeners = () =>
         }
 
         let isExpanding = body.attr("tb-page-state") !== "expanded";
-        body.attr("tb-page-state", isExpanding ? "expanded" : "normal");
+        // body.attr("tb-page-state", isExpanding ? "expanded" : "normal");
         // $("title").text(isExpanding ? navItem.find)
 
-        if (isExpanding)
+        let transistPage = () =>
         {
-            let targetPos = navItem.offset();
-            navItem.css("top", targetPos.top).css("left", targetPos.left - 100);
-            navItem.animate(
+            body.attr("tb-page-state", isExpanding ? "expanded" : "normal");
+            if (isExpanding)
             {
-                top: 0,
-                left: 0
-            }, 200, 0);
+                moveNavItemToPageTop(navItem);
+            }
+            else
+            {
+                navItem.css("margin-top", "");
+            }
+        };
+
+        if(isExpanding)
+        {
+            showArtwork();
+            fadeArtwork({toOpacity: 0, backwards: false, stepSize: 100, callback: transistPage});
         }
         else
         {
-            navItem.css("top", "").css("left", "");
+            transistPage();
+            scheduledFading = setTimeout(() =>
+            {
+                showArtwork();
+                fadeArtwork({toOpacity: 1, backwards: true, stepSize: 100});
+            }, 1250);
         }
 
         history.pushState(null, null, isExpanding ? evt.target.href : "/");
         evt.preventDefault();
     });
+}
+
+let moveNavItemToPageTop = navItem =>
+{
+    let targetPos = navItem.offset();
+    navItem.css("margin-top", -targetPos.top);
 }

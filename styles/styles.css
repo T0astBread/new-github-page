@@ -35,6 +35,7 @@ body
 #centered-page-wrapper
 {
     vertical-align: middle;
+    z-index: 20;
 }
 
 #centered-page
@@ -64,6 +65,11 @@ nav ul li
     padding-left: 1em;
     text-indent: -1em;
     transition: .25s var(--nav-anim-easing);
+}
+
+nav ul li.no-transition
+{
+    transition: none;
 }
 
 nav ul li:hover, [tb-page-state=expanded] nav ul li.active
@@ -144,13 +150,12 @@ nav ul li .page
     padding-left: 0;
     text-indent: 0;
     margin-left: -1em;
-    transition: max-height .5s .25s ease;
+    transition: max-height .125s ease;
 }
 
 [tb-page-state=expanded] nav ul li.active .page
 {
     max-height: 80vh;
-    transition: max-height .125s ease;
 }
 
 #character-art-bg
@@ -164,19 +169,27 @@ nav ul li .page
     opacity: var(--character-art-bg-opacity);
     letter-spacing: -.035rem;
     filter: var(--character-art-bg-filter);
+    transition: opacity .5s ease;
 }
+
+/* [tb-page-state=expanded] #character-art-bg
+{
+    opacity: 0;
+} */
 
 #character-art-bg-wrapper
 {
     position: absolute;
     right: 0;
     bottom: 0;
+    z-index: 10;
 }
 
 #character-art-bg pre font
 {
     font-size: 2vh;
     /* font-size: 3pt; */
+    transition: opacity .005s ease;
 }
 
 html:not(.gecko) #character-art-bg pre font

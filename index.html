@@ -9,20 +9,16 @@
         <script src="/scripts/lib/css_browser_selector.js"></script>
         <script src="/scripts/character-art.js"></script>
         <script src="/scripts/nav.js"></script>
+        <script type="text/javascript">
+            $(document).ready(() =>
+            {
+                loadArtwork(() => showArtworkAnimated({colorAnimationType: 1}));
+                registerNavClickListeners();
+            });</script>
         <title>T0astBread's GitHub</title>
     </head>
     <body tb-theme="bw">
         <div id="page-wrapper" tb-theme="bw">
-            <script type="text/javascript">
-                $(document).ready(() =>
-                {
-                    loadArtwork(() => showArtworkAnimated(
-                    {
-                        colorAnimationType: 1
-                    }));
-                    registerNavClickListeners();
-                });
-            </script>
             <div id="centered-page-wrapper">
                 <div id="centered-page">
                     <h1>Header</h1>
