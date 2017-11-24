@@ -1,8 +1,10 @@
+let pathToRoot = "../";
+
 let loadMain = ownNavItem =>
 {
     let ownBody = $("body");
     let ownContent = $("#own-page").html();
-    ownBody.load("/ #page-wrapper", () =>
+    ownBody.load(pathToRoot + " #page-wrapper", () =>
     {
         let navItem = $("#page-wrapper nav #" + ownNavItem);
         navItem.addClass("active").append("<div class='page'>" + ownContent + "</div>");

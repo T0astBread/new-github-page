@@ -49,7 +49,8 @@ let registerNavClickListeners = () =>
             }, 1250);
         }
 
-        history.pushState(null, null, isExpanding ? evt.target.href : "/");
+        history.pushState(null, null, isExpanding ? evt.target.href : pathToRoot);
+        if(!isExpanding) pathToRoot = "./";
         evt.preventDefault();
     });
 }

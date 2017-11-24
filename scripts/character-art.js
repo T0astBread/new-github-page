@@ -86,4 +86,4 @@ const ARTWORKS =
 
 let getRandomCharacterArtwork = () => ARTWORKS[Math.floor(Math.random() * ARTWORKS.length)];
 
-let getRandomCharacterArtworkPath = () => "/character-art/" + getRandomCharacterArtwork() + ".html";
+let getRandomCharacterArtworkPath = () => pathToRoot + "/character-art/" + getRandomCharacterArtwork() + ".html";
