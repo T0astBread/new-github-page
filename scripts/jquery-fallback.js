@@ -1,1 +1,1 @@
-window.jQuery || document.write("<script src='" + pathToRoot + "scripts/lib/jquery-1.10.2.min.js'><\/script>")
+window.jQuery || document.write("<script src='" + pathToRoot + "scripts/lib/jquery.min.js'><\/script>")
