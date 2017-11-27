@@ -15,7 +15,7 @@ let registerNavClickListeners = () =>
         {
             navItem.append("<div class='page'></div>");
             console.log("Loading subpage");
-            navItem.find(".page").load(window.location.origin + evt.target.pathname + " #own-page", () => console.log("Done loading subpage"));
+            navItem.find(".page").load(window.location.origin + evt.target.pathname + "/ #own-page", () => console.log("Done loading subpage"));
         }
 
         let isExpanding = body.attr("tb-page-state") !== "expanded";
