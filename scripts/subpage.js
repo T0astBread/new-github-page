@@ -1,5 +1,3 @@
-let pathToRoot = "../";
-
 let loadMain = ownNavItem =>
 {
     console.log("Loading main body");
