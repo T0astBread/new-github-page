@@ -4,7 +4,12 @@
 
 let loadArtwork = (callback) =>
 {
-    $("#character-art-bg").load(getRandomCharacterArtworkPath(), callback);
+    console.log("Loading character artwork");
+    $("#character-art-bg").load(getRandomCharacterArtworkPath(), () =>
+    {
+        console.log("Done loading artwork");
+        if(callback) callback();
+    });
 }
 
 let hideArtwork = () =>

@@ -2,6 +2,7 @@ let pathToRoot = "../";
 
 let loadMain = ownNavItem =>
 {
+    console.log("Loading main body");
     let ownBody = $("body");
     let ownContent = $("#own-page").html();
     ownBody.load(pathToRoot + " #page-wrapper", () =>
