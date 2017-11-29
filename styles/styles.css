@@ -12,6 +12,7 @@
     --font-face: 125% Consolas;
     --character-art-bg-opacity: .35;
     --character-art-bg-filter: none;
+    --page-corner-border: 2px solid white;
 }
 
 body
@@ -52,6 +53,7 @@ body
 nav
 {
     --nav-anim-easing: ease-out;
+    --nav-anim-duration: .25s;
 }
 
 nav ul
@@ -64,7 +66,7 @@ nav ul li
     position: relative;
     padding-left: 1em;
     text-indent: -1em;
-    transition: .25s var(--nav-anim-easing);
+    transition: var(--nav-anim-duration) var(--nav-anim-easing);
 }
 
 nav ul li.no-transition
@@ -72,7 +74,14 @@ nav ul li.no-transition
     transition: none;
 }
 
-nav ul li:hover, [tb-page-state=expanded] nav ul li.active
+nav ul li:hover
+{
+    font-size: 125%;
+    padding-top: .05em;
+    padding-bottom: .05em;
+}
+
+[tb-page-state=expanded] nav ul li.active
 {
     font-size: 200%;
     padding-top: .1em;
@@ -145,6 +154,7 @@ nav ul li:hover::before
 
 nav ul li .page
 {
+    position: relative;
     max-height: 0;
     overflow: hidden;
     padding-left: 0;
@@ -156,6 +166,106 @@ nav ul li .page
 [tb-page-state=expanded] nav ul li.active .page
 {
     max-height: 80vh;
+    height: 80vh;
+}
+
+.page-corners
+{
+    width: 10rem;
+    height: 10rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    --page-corners-transition: .25s .5s ease;
+    transition: width var(--page-corners-transition), height var(--page-corners-transition);
+}
+
+[tb-page-state=collapsing] .page-corners
+{
+    visibility: hidden;
+}
+
+[tb-page-state=expanded] .active .page-corners
+{
+    /* top: 0;
+    left: 0;
+    transform: translate(0, 0); */
+    width: 100%;
+    height: 100%;
+}
+
+.page-corners *
+{
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+}
+
+[tb-page-state=expanded] .active .page-corners *
+{
+    animation: page-corners-border .5s 1s ease forwards;
+}
+
+@keyframes page-corners-border
+{
+    from
+    {
+        border-width: 2px;
+        opacity: 1;
+    }
+    to
+    {
+        border-width: 0;
+        opacity: 0;
+    }
+}
+
+.page-corners .upper
+{
+    top: 0;
+    border-top: var(--page-corner-border);
+}
+
+.page-corners .lower
+{
+    bottom: 0;
+    border-bottom: var(--page-corner-border);
+}
+
+.page-corners .left
+{
+    left: 0;
+    border-left: var(--page-corner-border);
+}
+
+.page-corners .right
+{
+    right: 0;
+    border-right: var(--page-corner-border);
+}
+
+.page-content
+{
+    opacity: 0;
+}
+
+[tb-page-state=expanded] .page-content
+{
+    animation: page-content-fade-in .5s 1s forwards;
+}
+
+@keyframes page-content-fade-in
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
 }
 
 #character-art-bg

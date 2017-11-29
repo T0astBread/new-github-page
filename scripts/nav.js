@@ -1,4 +1,6 @@
-let scheduledFading;
+const PAGE_HTML = "<div class='page-corners'><div class='upper left'></div><div class='lower left'></div><div class='upper right'></div><div class='lower right'></div></div>";
+
+let scheduledFading, scheduledPageStateChange;
 
 let registerNavClickListeners = () =>
 {
@@ -8,29 +10,38 @@ let registerNavClickListeners = () =>
         let target = $(evt.target);
         let navItem = target.parent("li");
 
-        navItem.parent().find(".active").removeClass("active");
-        navItem.addClass("active");
-
         if(!navItem.has(".page").length)
         {
             navItem.append("<div class='page'></div>");
             console.log("Loading subpage");
-            navItem.find(".page").load(window.location.origin + evt.target.pathname + "/ #own-page", () => console.log("Done loading subpage"));
+            let page = navItem.find(".page");
+            page.load(window.location.origin + evt.target.pathname + "/ #own-page", () =>
+            {
+                console.log("Done loading subpage");
+                page.find("#own-page").removeAttr("id").addClass("page-content");
+                page.prepend(PAGE_HTML);
+            });
         }
 
         let isExpanding = body.attr("tb-page-state") !== "expanded";
         // body.attr("tb-page-state", isExpanding ? "expanded" : "normal");
         // $("title").text(isExpanding ? navItem.find)
 
+        navItem.parent().find(".active").removeClass("active");
+        if(isExpanding) navItem.addClass("active");
+
         let transistPage = () =>
         {
-            body.attr("tb-page-state", isExpanding ? "expanded" : "normal");
+            clearTimeout(scheduledPageStateChange);
             if (isExpanding)
             {
+                setPageState("expanded");
                 moveNavItemToPageTop(navItem);
             }
             else
             {
+                setPageState("collapsing");
+                scheduledPageStateChange = setTimeout(() => setPageState("normal"), 250);
                 navItem.css("margin-top", "");
             }
         };
@@ -61,3 +72,5 @@ let moveNavItemToPageTop = navItem =>
     let targetPos = navItem.offset();
     navItem.css("margin-top", -targetPos.top);
 }
+
+let setPageState = newState => $("body").attr("tb-page-state", newState);
