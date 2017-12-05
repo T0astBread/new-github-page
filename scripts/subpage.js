@@ -6,7 +6,7 @@ let loadMain = ownNavItem =>
     ownBody.load(pathToRoot + " #page-wrapper", () =>
     {
         let navItem = $("#page-wrapper nav #" + ownNavItem);
-        navItem.addClass("active").append("<div class='page'>" + ownContent + "</div>");
+        navItem.addClass("active").append("<div class='page'>" + PAGE_HTML + "<div class='page-content'>" + ownContent + "</div>" + "</div>");
         ownBody.attr("tb-theme", $("#page-wrapper").attr("tb-theme"));
         registerNavClickListeners();
         loadArtwork(() => $("#character-art-bg pre font").css("opacity", 0));
