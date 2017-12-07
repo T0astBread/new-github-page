@@ -6,7 +6,7 @@ let registerNavClickListeners = () =>
 {
     $("nav a").click(evt =>
     {
-        let pageName = evt.target.pathname.replace("/", "");
+        let pageName = evt.target.pathname.replace(/.*\//, "");
         let body = $("body");
         let target = $(evt.target);
         let navItem = target.parent("li");
