@@ -107,18 +107,20 @@ nav ul li::before
 {
     content: ">";
     position: absolute;
-    transition: transform .25s ease;
+    transition: transform .25s cubic-bezier(0.56, 0.39, 0.27, 1.55);
 }
 
 [tb-page-state=expanded] nav ul li::before
 {
     /* content: "<"; */
-    transform: scale(-1) translateX(1.75em);
+    transform: scale(-1) translate(1.5em, -.1em);
+    /* transform: scale(0); */
 }
 
-nav ul li:hover::before
+[tb-page-state=normal] nav ul li:hover::before
 {
-    animation: nav-li-bounce-left 1s ease, nav-li-bounce-left-simple .3s .95s alternate ease infinite;
+    /* animation: nav-li-bounce-left 1s ease, nav-li-bounce-left-simple .3s .95s alternate ease infinite; */
+    transform: scale(1) translate(-.25em);
 }
 
 @keyframes nav-li-bounce-left
@@ -176,6 +178,7 @@ nav ul li .page
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .page-corners
