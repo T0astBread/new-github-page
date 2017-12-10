@@ -103,11 +103,18 @@ nav ul li:hover
     font-size: 240%;
 }
 
+nav ul li a
+{
+    padding-left: 1.45em;
+    margin-left: -1.45em;
+}
+
 nav ul li::before
 {
     content: ">";
     position: absolute;
     transition: transform .25s cubic-bezier(0.56, 0.39, 0.27, 1.55);
+    pointer-events: none;
 }
 
 [tb-page-state=expanded] nav ul li::before
