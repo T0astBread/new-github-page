@@ -18,7 +18,8 @@
 body
 {
     position: relative;
-    margin-left: 5rem;
+    --body-margin-left: 5rem;
+    margin-left: var(--body-margin-left);
 
     background-color: var(--main-bg);
     color: var(--text-primary);
@@ -187,15 +188,20 @@ nav ul li .page
     transition: width var(--page-corners-transition), height var(--page-corners-transition);
 }
 
-[tb-page-state=collapsing] .page-corners
+[tb-page-state=collapsing] nav .page-corners
 {
     visibility: hidden;
 }
 
-[tb-page-state=expanded] .active .page-corners
+[tb-page-state=expanded] nav .active .page-corners
 {
     width: 100%;
     height: 100%;
+}
+
+[tb-page-state=expanded] #page-wrapper > .page-corners *
+{
+    border-width: 0;
 }
 
 .page-corners *
@@ -205,11 +211,15 @@ nav ul li .page
     position: absolute;
 
     transition: .25s ease;
+}
+
+nav .page-corners *
+{
     border-width: 0;
     opacity: 0;
 }
 
-[tb-page-state=expanded] .active [loading-state=loading] .page-corners *
+[tb-page-state=expanded] nav .active [loading-state=loading] .page-corners *
 {
     /* animation: page-corners-border .25s .5s ease reverse forwards; */
     border-width: 2px;
@@ -217,7 +227,7 @@ nav ul li .page
     transition-delay: .5s;
 }
 
-[tb-page-state=expanded] .active [loading-state=finished] .page-corners *
+[tb-page-state=expanded] nav .active [loading-state=finished] .page-corners *
 {
     /* animation: page-corners-border .5s 2s ease forwards; */
 }
@@ -234,6 +244,32 @@ nav ul li .page
         border-width: 0;
         opacity: 0;
     }
+}
+
+#page-wrapper > .page-corners
+{
+    --page-corners-size: 2rem;
+    --page-corner-border: 3px solid rgba(255, 255, 255, 0.226);
+    margin-left: calc(var(--body-margin-left) * -.5);
+    width: 100vw;
+    height: 100vh;
+    transition: opacity .25s .25s ease, .25s ease;
+}
+
+[tb-page-state=expanded] #page-wrapper > .page-corners
+{
+    opacity: 0;
+}
+
+#page-wrapper > .page-corners *
+{
+    margin: 1rem;
+    transition: .25s ease;
+}
+
+[tb-page-state=expanded] #page-wrapper > .page-corners *
+{
+    margin: 0;
 }
 
 .page-corners .upper
