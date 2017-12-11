@@ -65,7 +65,9 @@ nav ul
 nav ul li
 {
     position: relative;
-    padding-left: 1em;
+    --left-box-offset: 1.45em;
+    padding-left: calc(1em + var(--left-box-offset));
+    margin-left: calc(-1 * var(--left-box-offset));
     text-indent: -1em;
     transition: var(--nav-anim-duration) var(--nav-anim-easing);
 }
@@ -175,8 +177,9 @@ nav ul li .page
 
 [tb-page-state=expanded] nav ul li.active .page
 {
-    max-height: 80vh;
-    height: 80vh;
+    max-height: 87vh;
+    height: 87vh;
+    width: 86vw;
 }
 
 .page-corners, .page-spinner
@@ -349,6 +352,9 @@ nav .page-corners *
 
 .page-content
 {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     opacity: 0;
     transition: opacity .5s;
 }
