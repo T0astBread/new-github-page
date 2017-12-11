@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+p
+{
+    margin: 1em 0;
+}
+
 [tb-theme=bw]
 {
     --main-bg: hsla(0, 0%, 2%, 1);
